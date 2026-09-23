@@ -28,7 +28,7 @@ The project is organized into seven parts:
 
 The Ball and Beam system consists of a ball rolling along a beam whose angular position is controlled by a servo motor. The control objective is to regulate the ball position by changing the beam angle.
 
-The nominal system parameters used in the project are:
+The nominal system parameters used in the project are :
 
 | Parameter | Symbol | Value |
 |---|---:|---:|
