@@ -41,10 +41,7 @@ The nominal system parameters used in the project are :
 The motor transfer function, before the gearbox, is
 
 $$
-\frac{\Theta(s)}{V(s)}
-=
-\frac{0.0274}
-{0.003228s^2+0.003508}.
+\frac{\Theta(s)}{V(s)}=\frac{0.0274}{0.003228s^2+0.003508}.
 $$
 
 ---
