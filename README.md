@@ -32,20 +32,20 @@ The nominal system parameters used in the project are:
 
 | Parameter | Symbol | Value |
 |---|---:|---:|
-| Ball mass | \(m\) | 1.5 kg |
-| Lever-arm length | \(d\) | 0.05 m |
-| Ball radius | \(a\) | 0.02 m |
-| Beam length | \(L\) | 3 m |
+| Ball mass | $m$ | 1.5 kg |
+| Lever-arm length | $d$ | 0.05 m |
+| Ball radius | $a$ | 0.02 m |
+| Beam length | $L$ | 3 m |
 | Gear reduction | — | 5:1 |
 
 The motor transfer function, before the gearbox, is
 
-\[
+$$
 \frac{\Theta(s)}{V(s)}
 =
 \frac{0.0274}
 {0.003228s^2+0.003508}.
-\]
+$$
 
 ---
 
@@ -53,48 +53,48 @@ The motor transfer function, before the gearbox, is
 
 The ball-position dynamics with respect to beam angle are described by
 
-\[
+$$
 \frac{R(s)}{\Theta(s)}
 =
 \frac{mg\sin(\alpha)}
 {\left(\frac{J}{a^2}+m\right)s^2},
-\]
+$$
 
 with the geometric relation
 
-\[
+$$
 \sin(\alpha)=\frac{d}{L}\sin(\theta).
-\]
+$$
 
 For a solid spherical ball,
 
-\[
+$$
 J=\frac{2}{5}ma^2.
-\]
+$$
 
 Using the small-angle approximation
 
-\[
+$$
 \sin(\theta)\approx\theta,
-\]
+$$
 
 the model is linearized as
 
-\[
+$$
 \frac{R(s)}{\Theta(s)}
 =
 \frac{mgd}
 {\frac{7}{5}Ls^2}.
-\]
+$$
 
 After combining the ball dynamics, motor model, and the 5:1 gearbox, the nominal linear plant used for controller design becomes
 
-\[
+$$
 G(s)
 =
 \frac{0.29739}
 {s^3(s+1.087)}.
-\]
+$$
 
 The nonlinear Simulink model retains the nonlinear geometric relation and is used to verify whether controllers designed from the linearized model remain effective on the more realistic system.
 
@@ -106,52 +106,52 @@ The nominal plant has challenging open-loop dynamics, so an **auxiliary stabiliz
 
 Using an internal-model-based design, the auxiliary controller was derived from
 
-\[
+$$
 K=\frac{X+MQ}{Y-NQ},
-\]
+$$
 
 with
 
-\[
+$$
 N=G,\qquad M=1,\qquad X=0,\qquad Y=1.
-\]
+$$
 
 The selected filter was
 
-\[
+$$
 Q=
 53.8
 \frac{s^3(s+1.087)}
 {(s+2)^4},
-\]
+$$
 
 which results in the stabilizing controller
 
-\[
+$$
 K(s)
 =
 53.8
 \frac{s^2(s+1.087)}
 {(s+4)(s^2+4s+8)}.
-\]
+$$
 
 The outer controller was then designed using the MATLAB **SISO Design Tool**.
 
 ### Linear-model controller
 
-\[
+$$
 C_{\mathrm{PI,lin}}(s)
 =
 0.054\frac{s+5}{s}
 =
 0.054+\frac{0.27}{s}.
-\]
+$$
 
 Therefore,
 
-\[
+$$
 K_P=0.054,\qquad K_I=0.27.
-\]
+$$
 
 The linear closed-loop response achieved:
 
@@ -165,19 +165,19 @@ The linear closed-loop response achieved:
 
 Applying the same controller directly to the nonlinear model produced a slower response. The controller gain was therefore increased, giving
 
-\[
+$$
 C_{\mathrm{PI,nonlin}}(s)
 =
 0.11\frac{s+5}{s}
 =
 0.11+\frac{0.55}{s}.
-\]
+$$
 
 Thus,
 
-\[
+$$
 K_P=0.11,\qquad K_I=0.55.
-\]
+$$
 
 The resulting nonlinear response was:
 
@@ -205,17 +205,17 @@ In this part, the outer controller was tuned using **MATLAB PID Tuner**, while r
 
 The tuned PI controller was
 
-\[
+$$
 C_{\mathrm{PI}}(s)
 =
 0.1138+\frac{0.5235}{s}.
-\]
+$$
 
 Therefore,
 
-\[
+$$
 K_P=0.1138,\qquad K_I=0.5235.
-\]
+$$
 
 For the nonlinear simulation, the reported closed-loop performance was:
 
@@ -245,20 +245,20 @@ This part investigates controller design using taught tuning methods, including 
 
 The stabilized inner-loop plant was first approximated by a first-order model. Among the investigated approximations, the frequency-response approximation without delay was selected:
 
-\[
+$$
 G_F(s)=\frac{1}{1.936s+1}.
-\]
+$$
 
 Several candidate PI/PID controllers were then generated and compared.
 
 The selected controller was
 
-\[
+$$
 C_3(s)
 =
 \frac{0.7568s^2+1.515s+0.9854}
 {0.02416s^2+s}.
-\]
+$$
 
 On the linearized model, with actuator saturation and anti-windup considered, the response achieved:
 
@@ -287,28 +287,28 @@ In this section, PID controllers were designed using MATLAB optimization tools w
 
 - ITAE
 - ISTE
-- \(IT^2SE\)
-- \(IT^2AE\)
+- $IT^2SE$
+- $IT^2AE$
 
 The controllers were compared on the linear model. After accounting for actuator saturation and increasing the anti-windup gain, the **ITAE-based controller** was selected.
 
 Its gains were
 
-\[
+$$
 K_P=1.6805,
 \qquad
 K_I=1.1198,
 \qquad
 K_D=0.93698.
-\]
+$$
 
 Therefore,
 
-\[
+$$
 C_4(s)
 =
 1.6805+\frac{1.1198}{s}+0.93698s.
-\]
+$$
 
 The linear-model response achieved:
 
@@ -337,23 +337,23 @@ A **2-DOF PI controller** was designed using MATLAB PID Tuner to provide additio
 
 The controller is expressed as
 
-\[
+$$
 u
 =
 0.0545(0.0201r-y)
 +
 0.5177\frac{1}{s}(r-y).
-\]
+$$
 
 The controller parameters are therefore
 
-\[
+$$
 K_P=0.0545,
 \qquad
 K_I=0.5177,
 \qquad
 b=0.0201.
-\]
+$$
 
 The nonlinear closed-loop response achieved:
 
@@ -405,85 +405,85 @@ Three cases were studied:
 
 The modified stabilizing controller was
 
-\[
+$$
 K(s)
 =
 40.351
 \frac{s^2(s+1.087)}
 {(s+4)(s^2+4s+8)}.
-\]
+$$
 
 The retuned PI controller was
 
-\[
+$$
 C(s)
 =
 0.14\frac{s+3}{s}
 =
 0.14+\frac{0.42}{s}.
-\]
+$$
 
 Hence,
 
-\[
+$$
 K_P=0.14,\qquad K_I=0.42.
-\]
+$$
 
 ## Case 2 — Beam Length = 1 m
 
 The modified stabilizing controller was
 
-\[
+$$
 K(s)
 =
 17.934
 \frac{s^2(s+1.087)}
 {(s+4)(s^2+4s+8)}.
-\]
+$$
 
 The retuned PI controller was
 
-\[
+$$
 C(s)
 =
 1.1\frac{s+1}{s}
 =
 1.1+\frac{1.1}{s}.
-\]
+$$
 
 Hence,
 
-\[
+$$
 K_P=1.1,\qquad K_I=1.1.
-\]
+$$
 
 ## Case 3 — Ball Mass = 2 kg and Beam Length = 1 m
 
 The modified stabilizing controller was
 
-\[
+$$
 K(s)
 =
 13.450
 \frac{s^2(s+1.087)}
 {(s+4)(s^2+4s+8)}.
-\]
+$$
 
 The retuned PI controller was
 
-\[
+$$
 C(s)
 =
 1.5\frac{s+0.67}{s}
 =
 1.5+\frac{1}{s}.
-\]
+$$
 
 Hence,
 
-\[
+$$
 K_P=1.5,\qquad K_I=1.
-\]
+$$
 
 ## Robustness Results
 
