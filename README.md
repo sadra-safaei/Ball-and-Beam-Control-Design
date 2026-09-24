@@ -45,6 +45,9 @@ $$
 $$
 
 ---
+### Ball and Beam System
+
+![Ball and Beam System](01_SISO_PID_Design\Ball_and_Beam_System.png)
 
 ## Nonlinear and Linearized Ball Dynamics
 
@@ -121,6 +124,20 @@ $$
 
 The outer controller was then designed using the MATLAB **SISO Design Tool**.
 
+### Closed-Loop Control Architecture
+
+The designed auxiliary stabilizing controller was integrated with the outer PI controller, motor dynamics, gearbox, and Ball and Beam plant in a closed-loop Simulink model.
+
+The same overall control architecture was used for both the linearized and nonlinear plant models, allowing the designed controllers to be evaluated under both modeling assumptions.
+
+<p align="center">
+  <img src="01_SISO_PID_Design\NonLinear_SISO_BlockDiagram.png" width="900">
+</p>
+
+<p align="center">
+  <em>Closed-loop Simulink implementation of the Ball and Beam control system.</em>
+</p>
+
 ### Linear-model controller
 
 $$
@@ -167,11 +184,13 @@ The resulting nonlinear response was:
 
 **Linear model**
 
-![Part 1 - Linear Step Response](01_SISO_PID/Results/linear_step_response.png)
+![Part 1 - Linear Step Response](01_SISO_PID_Design\Linear_SISO_Result.png)
+
 
 **Nonlinear model**
 
-![Part 1 - Nonlinear Step Response](01_SISO_PID/Results/nonlinear_step_response.png)
+![Part 1 - Nonlinear Step Response](01_SISO_PID_Design\NonLinear_SISO_Result.png)
+
 
 ---
 
@@ -203,13 +222,9 @@ The actuator voltage remained below the 30 V saturation limit.
 
 ### Step Responses
 
-**Linear model**
-
-![Part 2 - Linear Step Response](02_PID_Tuner/Results/linear_step_response.png)
-
 **Nonlinear model**
 
-![Part 2 - Nonlinear Step Response](02_PID_Tuner/Results/nonlinear_step_response.png)
+![Part 2 - Nonlinear Step Response](02_PID_Tuner_Design\NonLinear_PID_Tuner_Result.png)
 
 ---
 
@@ -244,11 +259,7 @@ Although this controller performed well on the linear model, its nonlinear-model
 
 **Linear model**
 
-![Part 3 - Linear Step Response](03_Classical_PID/Results/linear_step_response.png)
-
-**Nonlinear model**
-
-![Part 3 - Nonlinear Step Response](03_Classical_PID/Results/nonlinear_step_response.png)
+![Part 3 - Linear Step Response](03_Classical_PID_Tuning\Linear_Classical_PID_Tuning_Result.png)
 
 ---
 
@@ -288,16 +299,6 @@ The linear-model response achieved:
 
 The report also shows that this controller did not provide a satisfactory response on the nonlinear model.
 
-### Step Responses
-
-**Linear model**
-
-![Part 4 - Linear Step Response](04_PID_Optimization/Results/linear_step_response.png)
-
-**Nonlinear model**
-
-![Part 4 - Nonlinear Step Response](04_PID_Optimization/Results/nonlinear_step_response.png)
-
 ---
 
 # Part 5 — Two-Degree-of-Freedom PID
@@ -336,7 +337,7 @@ The nonlinear closed-loop response achieved:
 
 **Nonlinear model**
 
-![Part 5 - Nonlinear Step Response](05_PID_2DOF/Results/nonlinear_step_response.png)
+![Part 5 - Nonlinear Step Response](05_PID_2DOF\NonLinear_PID_2DOF_Result.png)
 
 ---
 
@@ -441,15 +442,7 @@ All three modified configurations remained below the 30 V actuator limit after c
 
 **Ball mass = 2 kg**
 
-![Mass Variation](07_Robustness_Analysis/Results/mass_2kg_step_response.png)
-
-**Beam length = 1 m**
-
-![Beam Length Variation](07_Robustness_Analysis/Results/beam_length_1m_step_response.png)
-
-**Ball mass = 2 kg and beam length = 1 m**
-
-![Combined Variation](07_Robustness_Analysis/Results/mass_2kg_length_1m_step_response.png)
+![Mass Variation](07_Robustness_Test\mass_2kg_step_response.png)
 
 ---
 
