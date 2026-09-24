@@ -131,7 +131,7 @@ The designed auxiliary stabilizing controller was integrated with the outer PI c
 The same overall control architecture was used for both the linearized and nonlinear plant models, allowing the designed controllers to be evaluated under both modeling assumptions.
 
 <p align="center">
-  <img src="01_SISO_PID_Design\NonLinear_SISO_BlockDiagram.png" width="900">
+  <img src="01_SISO_PID_Design/NonLinear_SISO_BlockDiagram.png" width="900">
 </p>
 
 <p align="center">
@@ -331,10 +331,6 @@ The nonlinear closed-loop response achieved:
 
 ### Step Responses
 
-**Linear model**
-
-![Part 5 - Linear Step Response](05_PID_2DOF/Results/linear_step_response.png)
-
 **Nonlinear model**
 
 ![Part 5 - Nonlinear Step Response](05_PID_2DOF/NonLinear_PID_2DOF_Result.png)
@@ -442,7 +438,7 @@ All three modified configurations remained below the 30 V actuator limit after c
 
 **Ball mass = 2 kg**
 
-![Mass Variation](07_Robustness_Test\mass_2kg_step_response.png)
+![Mass Variation](07_Robustness_Test/mass_2kg_step_response.png)
 
 ---
 
@@ -453,13 +449,12 @@ Ball-and-Beam-Control-Design/
 │
 ├── README.md
 │
-├── 01_SISO_PID/
-├── 02_PID_Tuner/
-├── 03_Classical_PID/
+├── 01_SISO_PID_Design/
+├── 02_PID_Tuner_Design/
+├── 03_Classical_PID_Tuning/
 ├── 04_PID_Optimization/
 ├── 05_PID_2DOF/
-├── 06_Controller_Comparison/
-└── 07_Robustness_Analysis/
+└── 07_Robustness_Test/
 ```
 
 Each design folder contains the relevant **Simulink model**, available **MATLAB code**, and **simulation-result figures**.
