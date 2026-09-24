@@ -51,10 +51,7 @@ $$
 The ball-position dynamics with respect to beam angle are described by
 
 $$
-\frac{R(s)}{\Theta(s)}
-=
-\frac{mg\sin(\alpha)}
-{\left(\frac{J}{a^2}+m\right)s^2},
+\frac{R(s)}{\Theta(s)}=\frac{mg\sin(\alpha)}{\left(\frac{J}{a^2}+m\right)s^2},
 $$
 
 with the geometric relation
@@ -78,19 +75,13 @@ $$
 the model is linearized as
 
 $$
-\frac{R(s)}{\Theta(s)}
-=
-\frac{mgd}
-{\frac{7}{5}Ls^2}.
+\frac{R(s)}{\Theta(s)}=\frac{mgd}{\frac{7}{5}Ls^2}.
 $$
 
 After combining the ball dynamics, motor model, and the 5:1 gearbox, the nominal linear plant used for controller design becomes
 
 $$
-G(s)
-=
-\frac{0.29739}
-{s^3(s+1.087)}.
+G(s)=\frac{0.29739}{s^3(s+1.087)}.
 $$
 
 The nonlinear Simulink model retains the nonlinear geometric relation and is used to verify whether controllers designed from the linearized model remain effective on the more realistic system.
@@ -125,11 +116,7 @@ $$
 which results in the stabilizing controller
 
 $$
-K(s)
-=
-53.8
-\frac{s^2(s+1.087)}
-{(s+4)(s^2+4s+8)}.
+K(s)=53.8\frac{s^2(s+1.087)}{(s+4)(s^2+4s+8)}.
 $$
 
 The outer controller was then designed using the MATLAB **SISO Design Tool**.
@@ -137,11 +124,7 @@ The outer controller was then designed using the MATLAB **SISO Design Tool**.
 ### Linear-model controller
 
 $$
-C_{\mathrm{PI,lin}}(s)
-=
-0.054\frac{s+5}{s}
-=
-0.054+\frac{0.27}{s}.
+C_{\mathrm{PI,lin}}(s)=0.054\frac{s+5}{s}=0.054+\frac{0.27}{s}.
 $$
 
 Therefore,
@@ -163,11 +146,7 @@ The linear closed-loop response achieved:
 Applying the same controller directly to the nonlinear model produced a slower response. The controller gain was therefore increased, giving
 
 $$
-C_{\mathrm{PI,nonlin}}(s)
-=
-0.11\frac{s+5}{s}
-=
-0.11+\frac{0.55}{s}.
+C_{\mathrm{PI,nonlin}}(s)=0.11\frac{s+5}{s}=0.11+\frac{0.55}{s}.
 $$
 
 Thus,
@@ -203,9 +182,7 @@ In this part, the outer controller was tuned using **MATLAB PID Tuner**, while r
 The tuned PI controller was
 
 $$
-C_{\mathrm{PI}}(s)
-=
-0.1138+\frac{0.5235}{s}.
+C_{\mathrm{PI}}(s)=0.1138+\frac{0.5235}{s}.
 $$
 
 Therefore,
@@ -251,10 +228,7 @@ Several candidate PI/PID controllers were then generated and compared.
 The selected controller was
 
 $$
-C_3(s)
-=
-\frac{0.7568s^2+1.515s+0.9854}
-{0.02416s^2+s}.
+C_3(s)=\frac{0.7568s^2+1.515s+0.9854}{0.02416s^2+s}.
 $$
 
 On the linearized model, with actuator saturation and anti-windup considered, the response achieved:
@@ -302,9 +276,7 @@ $$
 Therefore,
 
 $$
-C_4(s)
-=
-1.6805+\frac{1.1198}{s}+0.93698s.
+C_4(s)=1.6805+\frac{1.1198}{s}+0.93698s.
 $$
 
 The linear-model response achieved:
@@ -335,11 +307,7 @@ A **2-DOF PI controller** was designed using MATLAB PID Tuner to provide additio
 The controller is expressed as
 
 $$
-u
-=
-0.0545(0.0201r-y)
-+
-0.5177\frac{1}{s}(r-y).
+u=0.0545(0.0201r-y)+0.5177\frac{1}{s}(r-y).
 $$
 
 The controller parameters are therefore
@@ -403,21 +371,13 @@ Three cases were studied:
 The modified stabilizing controller was
 
 $$
-K(s)
-=
-40.351
-\frac{s^2(s+1.087)}
-{(s+4)(s^2+4s+8)}.
+K(s)=40.351\frac{s^2(s+1.087)}{(s+4)(s^2+4s+8)}.
 $$
 
 The retuned PI controller was
 
 $$
-C(s)
-=
-0.14\frac{s+3}{s}
-=
-0.14+\frac{0.42}{s}.
+C(s)=0.14\frac{s+3}{s}=0.14+\frac{0.42}{s}.
 $$
 
 Hence,
@@ -431,21 +391,13 @@ $$
 The modified stabilizing controller was
 
 $$
-K(s)
-=
-17.934
-\frac{s^2(s+1.087)}
-{(s+4)(s^2+4s+8)}.
+K(s)=17.934\frac{s^2(s+1.087)}{(s+4)(s^2+4s+8)}.
 $$
 
 The retuned PI controller was
 
 $$
-C(s)
-=
-1.1\frac{s+1}{s}
-=
-1.1+\frac{1.1}{s}.
+C(s)=1.1\frac{s+1}{s}=1.1+\frac{1.1}{s}.
 $$
 
 Hence,
@@ -459,21 +411,13 @@ $$
 The modified stabilizing controller was
 
 $$
-K(s)
-=
-13.450
-\frac{s^2(s+1.087)}
-{(s+4)(s^2+4s+8)}.
+K(s)=13.450\frac{s^2(s+1.087)}{(s+4)(s^2+4s+8)}.
 $$
 
 The retuned PI controller was
 
 $$
-C(s)
-=
-1.5\frac{s+0.67}{s}
-=
-1.5+\frac{1}{s}.
+C(s)=1.5\frac{s+0.67}{s}=1.5+\frac{1}{s}.
 $$
 
 Hence,
